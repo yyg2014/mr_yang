@@ -1,5 +1,5 @@
 
-##尊重原创　转自http://www.arkulo.com/2015/04/08/phuml##
+**尊重原创　转自http://www.arkulo.com/2015/04/08/phuml**
 
 .. note:: **WARNING**: This project isn't actively maintained anymore, mainly due to
     the lack of time. I migrated it to github by request. Hopefully somebody
