@@ -1,5 +1,5 @@
 
-##[尊重原创 转自http://www.arkulo.com][1]##
+##[尊重原创　转自http://www.arkulo.com/2015/04/08/phuml/][1]##
 
 .. note:: **WARNING**: This project isn't actively maintained anymore, mainly due to
     the lack of time. I migrated it to github by request. Hopefully somebody
@@ -80,4 +80,4 @@ generate the example you can see above. ::
 	$ phuml -r ./ -dot -createAssociations false -neato example.png
 
 
-  [1]: http://www.arkulo.com/
+  [1]: http://www.arkulo.com/2015/04/08/phuml/
