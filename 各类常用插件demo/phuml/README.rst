@@ -1,5 +1,5 @@
 
-##**[转自http://www.arkulo.com][1]**##
+##[尊重原创 转自http://www.arkulo.com][1]##
 
 .. note:: **WARNING**: This project isn't actively maintained anymore, mainly due to
     the lack of time. I migrated it to github by request. Hopefully somebody

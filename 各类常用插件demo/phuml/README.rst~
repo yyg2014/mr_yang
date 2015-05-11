@@ -1,3 +1,6 @@
+
+##[尊重原创 转自http://www.arkulo.com][1]##
+
 .. note:: **WARNING**: This project isn't actively maintained anymore, mainly due to
     the lack of time. I migrated it to github by request. Hopefully somebody
     might find this useful as a base to work on again. Eventhough it should
@@ -75,3 +78,6 @@ example of how a complete phUML call could look like, this is the one used
 generate the example you can see above. ::
 
 	$ phuml -r ./ -dot -createAssociations false -neato example.png
+
+
+  [1]: http://www.arkulo.com/
