@@ -1,7 +1,7 @@
 <?php
-define(APP_PATH, dirname(__FILE__));
+define('APP_PATH', dirname(__FILE__));
 require_once(APP_PATH . "/library/phpqrcode.php");  //引入二维码工具类
-define(QRCODE_PATH, APP_PATH . '/img/');            //生存的二维码图片存放路径 不生成图片文件 可以省略
+define('QRCODE_PATH', APP_PATH . '/img/');            //生存的二维码图片存放路径 不生成图片文件 可以省略
 $id = 123456;                                       //虚拟文章ID 自定义
 $qrValue = 'http://localhost/' . $id . '.html';     //二维码存储内容  URL
 $qrPath  = QRCODE_PATH . $id . '.png';              //二维码生成路径+文件名
