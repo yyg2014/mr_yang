@@ -1,0 +1,55 @@
+	id			name			pid
+	1			服装			 0
+	2			上衣			 1
+	3			长袖			 2
+	4			短袖 			 2
+	5			裤子			 1
+	6			长裤			 5
+	7			化妆品			 0
+	8			香水			 7
+	
+	服装
+		上衣
+			长袖
+			短袖
+		裤子
+			长裤
+	化妆品
+		香水
+		
+	array(
+		array(
+			'id'=>1,
+			'name'=>'服装',
+			'pid'=>0,
+			'children'=>array(
+						array(
+							'id'=>2,
+							'name'=>"上衣",
+							'pid'=>1,
+							'children'=>array(
+									array(),
+									array()
+								)
+						),
+						array(
+							'id'=>5,
+							'name'=>"裤子",
+							'pid'=>1,
+							'children'=>array(
+									array(),
+								)
+						)
+					)
+		),
+		array()
+	)
+		
+		
+		
+		
+
+	
+	
+	
+	

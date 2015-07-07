@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+		<title>jQuery</title>
+		<script src="../jquery-1.11.0.min.js"></script>
+		<script src="index.js"></script>
+		<style>
+			*{padding:0;margin:0;}
+			img{
+				border:1px solid #ccc;
+			}
+			
+			
+			#small{
+				float:left;
+				margin-right:15px;
+				position:relative;
+				margin-left:10px;
+			}
+			#small #small_area{
+				width:100px;
+				height:100px;
+				background:yellow;
+				position:absolute;
+				left:100px;
+				top:100px;
+				opacity:0.5;
+				filter:alpha(opacity=50);
+			}
+			
+			#big{
+				float:left;
+				position:relative;
+			}
+			#big_area{
+				width:200px;
+				height:200px;
+				position:absolute;
+				left:0;
+				top:0;
+				border:1px solid #ccc;
+				overflow:hidden;
+			}
+			.big_img{
+				position:absolute;
+				left:-100px;
+				top:-100px;
+				z-index:-1;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="small">
+			<div id="small_area"></div>
+			<img class="small_img" src="./1.jpg" width="300px" />
+		</div>
+		<div id="big">
+			<div id="big_area">
+				<img class="big_img" src="./1.jpg" width="600px" />
+			</div>
+		</div>
+	</body>
+</html>
+
+
+
+
