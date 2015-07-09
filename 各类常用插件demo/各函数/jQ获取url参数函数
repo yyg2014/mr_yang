@@ -1,0 +1,30 @@
+/*
+*返回name参数
+*
+*
+*/
+(function($){
+    $.getUrlParam = function(name)
+    {
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r!=null) return unescape(r[2]); return null;
+    }
+})(jQuery);
+
+
+
+/*
+*判断重复值函数
+*
+*
+*/
+
+function in_array(search,array){
+    for(var i in array){
+           if(array[i]==search){
+                return true;
+            }
+      }
+     return false;
+}
