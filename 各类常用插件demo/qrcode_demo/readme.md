@@ -21,7 +21,7 @@
             参数$saveandprint表示是否保存二维码并显示
     
     */
-    QRcode::png($qrValue, $qrPath, 'L', 5, 4,false);     
+    QRcode::png($qrValue, $qrPath, 'L', 3, 4,false);     
     //注意  这里的生成路径变量默认是false 直接输出二维码图片
     
      $str = '<img src= http://localhost/test/erweima/img/' . $id . '.png />'   

@@ -1,4 +1,0 @@
-$parent = basename($_SERVER['HTTP_REFERER']);
-	if(empty($parent)){
-		exit("嘿嘿，小样儿，又来啦？这个地方也没有办法非法请求！给你们一个地址试试：http://www.12306.com");
-	}

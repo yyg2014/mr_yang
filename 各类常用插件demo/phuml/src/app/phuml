@@ -198,12 +198,16 @@ updateArguments( 1 );
 try 
 {
     cmdActions();
+
     cmdOptions();
+
     cmdDirOrFile();
+
     while( $argc > 1 ) 
     {
         cmdProcessor();
     }
+
     cmdOutFile();
 
     echo '[|] Running... (This may take some time)', "\n";
@@ -212,8 +216,8 @@ try
 }
 catch ( Exception $e ) 
 {
-    echo 'A fatal error occured during the process:', "\n";
-    echo $e->getMessage(), "\n";
+   echo 'A fatal error occured during the process:', "\n";
+   echo $e->getMessage(), "\n";
 }
 
 ?>
