@@ -1,0 +1,33 @@
+ <script type="text/javascript"> 
+var i = 1; var n; 
+function showImg() { 
+if (document.getElementById('img').getAttribute("src") == "./images/1.jpg") { 
+document.getElementById('img').setAttribute("src","./images/2.jpg"); 
+} 
+else { 
+document.getElementById('img').setAttribute("src","./images/1.jpg"); 
+} 
+} 
+function showImg1() { 
+document.getElementById('img').setAttribute("src", "./images/" + i + ".jpg"); i++; 
+if (i > 10) 
+{ 
+i = 1; 
+} 
+} 
+function show() { 
+n=setInterval(showImg1, 500); 
+} 
+function show1() { 
+clearInterval(n); 
+} 
+</script> 
+</head> 
+<body> 
+<img id="img" alt="" src="images/1.jpg" width="200" height="200" /> 
+<input id="Button1" type="button" value="换图片" onclick="showImg()" /> 
+<input id="Button2" type="button" value="切图" onclick="showImg1()" /> 
+<input id="Button3" type="button" value="轮换" onclick="show()" /> 
+<input id="Button4" type="button" value="停止轮换" onclick="show1()" /> 
+</body> 
+</html> 
