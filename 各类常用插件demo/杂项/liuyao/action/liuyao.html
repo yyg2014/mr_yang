@@ -1,0 +1,416 @@
+<html>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+    <script src="jquery-1.8.1.js" type="text/javascript"></script>
+
+
+<body bgcolor="#66ccff">
+<center>
+	<table width="60%" height="80%" bgcolor="#ffffff" border="1" cellspacing="0" cellpadding="0">
+ 		<tr height="180px">
+ 			<th align="center" colspan="3" valign="middle">
+				<img id="yao" src="../images/yao1.jpg"><br/>
+				<font size="3" face="微软雅黑" id="final">小玩意仅供娱乐</font>					
+				<font size="3" face="微软雅黑" id="ben">本卦：</font><img id="benyao"src="">&nbsp;&nbsp;<font size="3" face="微软雅黑" id="bian">变卦：</font><img id="bianyao" src="">
+			</th>							
+		</tr>		
+		<tr height="150px">
+			<td width="33%">
+				<span><img id="a" src="../images/zheng.jpg"></span>
+				<input id="va" type="hidden"/>
+			</td>
+			<td width="33%">
+				<span ><img id="b" src="../images/zheng.jpg"></span>
+				<input id="vb" type="hidden"/>
+			</td>
+			<td width="33%">
+				<span ><img id="c" src="../images/zheng.jpg"></span>
+				<input id="vc" type="hidden"/>
+			</td>
+		</tr>
+		<tr height="260px">
+			<td colspan="3" >
+				<p id="rock6" ><img class="img" id="img6"src=""/></p>
+				<p id="rock5" ><img class="img" id="img5"src=""/></p>
+				<p id="rock4" ><img class="img" id="img4"src=""/></p>
+				<p id="rock3" ><img class="img" id="img3"src=""/></p>
+				<p id="rock2" ><img class="img" id="img2"src=""/></p>
+				<p id="rock1" ><img class="img" id="img1"src=""/></p>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<button id="start" style="background:#cc66ff;width:100px;height:30px">一摇</button>&nbsp;&nbsp;
+				<button id="stop" style="background:#cc66ff;width:100px;height:30px">停</button>
+			</td>
+			<td>
+				<button id="mean" style="background:#cc66ff;width:100px;height:30px">解释</button>
+			</td>
+			<td>
+				<button id="reset" onclick="javascript:history.go(0);" style="background:#cc66ff;width:100px;height:30px">重来</button>
+			</td>
+		</tr>
+	</table>
+</center>
+</body>
+</html>
+<script>
+	$(function(){
+		$("td").attr("align","center");
+		$(".img").hide();
+		$("#show_ly").hide();
+		$("#benyao").hide();
+		$("#bianyao").hide();
+		$("#ben").hide();
+		$("#bian").hide();		
+		var alignA = "";
+		var alignB = "";
+		var alignC = "";
+		var total = Array(); 
+		var Total = Array();
+		var rock = 1;
+		var hand = 1;
+		// 本爻
+		var str_ly_a="";
+		// 变爻
+		var str_ly_b="";		
+		var ly = Array();
+		var db = Array();
+		db['aaaaaa']='qwt';
+		db['baaaaa']='tfg';
+		db['bbaaaa']='tsd';
+		db['bbbaaa']='tdf';
+		db['bbbbaa']='fdg';
+		db['bbbbba']='sdb';
+		db['bbbaba']='hdj';
+		db['aaaaba']='htdy';
+		db['aabaab']='dwz';
+		db['babaab']='zsk';
+		db['bbbaab']='zdc';
+		db['bbaaab']='zsx';
+		db['bbabab']='ssj';
+		db['bbabbb']='dsq';
+		db['bbaabb']='lsxg';
+		db['aababb']='lzgm';
+		db['abaaba']='lwh';
+		db['bbaaba']='hsl';
+		db['baaaba']='hfd';
+		db['bababa']='hswj';
+		db['babbba']='ssm';
+		db['babbaa']='fsy';
+		db['babaaa']='tss';
+		db['abaaaa']='thtr';
+		db['abbabb']='zwl';
+		db['bbbabb']='ldy';
+		db['bababb']='lsj';
+		db['baaabb']='lfh';
+		db['baabbb']='dfs';
+		db['baabab']='sfj';
+		db['baaaab']='zfdg';
+		db['abbaab']='zls';
+		db['baabaa']='xwf';
+		db['aaabaa']='ftxc';
+		db['ababaa']='fhjr';
+		db['abbbaa']='fly';
+		db['abbaaa']='tlww';
+		db['abbaba']='hlsk';
+		db['abbbba']='sly';
+		db['baabba']='sfg';
+		db['babbab']='kws';
+		db['aabbab']='szj';
+		db['abbbab']='slt';
+		db['ababab']='shjj';
+		db['abaaab']='zhg';
+		db['abaabb']='lhf';
+		db['ababbb']='dhmy';
+		db['babbbb']='dss';
+		db['bbabba']='gws';
+		db['ababba']='shb';
+		db['aaabba']='stdx';
+		db['aabbba']='szs';
+		db['aababa']='hzk';
+		db['aabaaa']='tzl';
+		db['aabbaa']='fzzf';
+		db['bbabaa']='fsj';
+		db['bbbbbb']='kwd';
+		db['abbbbb']='dlf';
+		db['aabbbb']='dzl';
+		db['aaabbb']='dtt';
+		db['aaaabb']='ltdz';
+		db['aaaaab']='ztg';
+		db['aaabab']='stx';
+		db['bbbbab']='sdbi';
+
+		function suiji($w,$v)
+		{
+			var num  = Math.round(Math.random());
+			var word = "";
+			if (num==1) 
+			{
+				$("#"+$w).attr("src","../images/zheng.jpg");
+				$("#"+$v).val(1);
+			}else
+			{
+				$("#"+$w).attr("src","../images/fan.jpg");
+				$("#"+$v).val(0);
+			}
+		}
+		function yao()
+		{
+			
+			if(hand==1)
+			{
+				$("#yao").attr("src","../images/yao1.jpg");
+				hand=2;
+			}else 
+			{
+				$("#yao").attr("src","../images/yao2.jpg");
+				hand=1;
+			}
+		}
+		$("#start").click(function(){
+				total=Array();
+				alignA=setInterval(function(){suiji('a','va')},10);
+				alignB=setInterval(function(){suiji('b','vb')},10);
+				alignC=setInterval(function(){suiji('c','vc')},10);
+				alignyao=setInterval(function(){yao(hand)},200);
+		});
+		$("#stop").click(function(){
+			
+				clearInterval(alignA);
+				clearInterval(alignB);
+				clearInterval(alignC);
+				clearInterval(alignyao);
+				total.push($("#va").val());
+				total.push($("#vb").val());
+				total.push($("#vc").val());
+				
+				switch(rock)
+				{
+				
+					case 1: 
+						$("#start").text("二摇");
+						var img1=arrtimes('0',total);// 0出现次数 反面次数
+						switch(img1)
+						{
+							case 0:
+								$("#img1").show();
+								$("#img1").attr("src","../images/3.jpg");
+								ly[1]='bc';
+								break;
+							case 1:
+								$("#img1").show();
+								$("#img1").attr("src","../images/2.jpg");
+								ly[1]='a';
+								break;
+							case 2:
+								$("#img1").show();
+								$("#img1").attr("src","../images/4.jpg");
+								ly[1]='b';
+								break;
+							case 3:
+								$("#img1").show();
+								$("#img1").attr("src","../images/1.jpg");
+								ly[1]='ac';
+								break;															
+						}
+						break;
+					case 2: // 0出现次数 反面次数
+						$("#start").text("三摇");
+						var img2=arrtimes('0',total);
+						switch(img2)
+						{
+							case 0:
+								$("#img2").show();
+								$("#img2").attr("src","../images/3.jpg");
+								ly[2]='bc';
+								break;
+							case 1:
+								$("#img2").show();
+								$("#img2").attr("src","../images/2.jpg");
+								ly[2]='a';
+								break;
+							case 2:
+								$("#img2").show();
+								$("#img2").attr("src","../images/4.jpg");
+								ly[2]='b';
+								break;
+							case 3:
+								$("#img2").show();
+								$("#img2").attr("src","../images/1.jpg");
+								ly[2]='ac';
+								break;															
+						}
+						break;
+					case 3: // 0出现次数 反面次数
+						$("#start").text("四摇");
+						var img3=arrtimes('0',total);
+						switch(img3)
+						{
+							case 0:
+								$("#img3").show();
+								$("#img3").attr("src","../images/3.jpg");
+								ly[3]='bc';
+								break;
+							case 1:
+								$("#img3").show();
+								$("#img3").attr("src","../images/2.jpg");
+								ly[3]='a';
+								break;
+							case 2:
+								$("#img3").show();
+								$("#img3").attr("src","../images/4.jpg");
+								ly[3]='b';
+								break;
+							case 3:
+								$("#img3").show();
+								$("#img3").attr("src","../images/1.jpg");
+								ly[3]='ac';
+								break;															
+						}
+						break;
+					case 4: // 0出现次数 反面次数
+						$("#start").text("五摇");
+						var img4=arrtimes('0',total);
+						switch(img4)
+						{
+							case 0:
+								$("#img4").show();
+								$("#img4").attr("src","../images/3.jpg");
+								ly[4]='bc';
+								break;
+							case 1:
+								$("#img4").show();
+								$("#img4").attr("src","../images/2.jpg");
+								ly[4]='a';
+								break;
+							case 2:
+								$("#img4").show();
+								$("#img4").attr("src","../images/4.jpg");
+								ly[4]='b';
+								break;
+							case 3:
+								$("#img4").show();
+								$("#img4").attr("src","../images/1.jpg");
+								ly[4]='ac';
+								break;															
+						}
+						break;
+					case 5: // 0出现次数 反面次数
+						$("#start").text("六摇");
+						var img5=arrtimes('0',total);
+						switch(img5)
+						{
+							case 0:
+								$("#img5").show();
+								$("#img5").attr("src","../images/3.jpg");
+								ly[5]='bc';
+								break;
+							case 1:
+								$("#img5").show();
+								$("#img5").attr("src","../images/2.jpg");
+								ly[5]='a';
+								break;
+							case 2:
+								$("#img5").show();
+								$("#img5").attr("src","../images/4.jpg");
+								ly[5]='b';
+								break;
+							case 3:
+								$("#img5").show();
+								$("#img5").attr("src","../images/1.jpg");
+								ly[5]='ac';
+								break;															
+						}
+						break;
+					case 6: // 0出现次数 反面次数
+						$("#start").text("请点击'解释'");
+						var img6=arrtimes('0',total);
+						switch(img6)
+						{
+							case 0:
+								$("#img6").show();
+								$("#img6").attr("src","../images/3.jpg");
+								ly[6]='bc';
+								break;
+							case 1:
+								$("#img6").show();
+								$("#img6").attr("src","../images/2.jpg");
+								ly[6]='a';
+								break;
+							case 2:
+								$("#img6").show();
+								$("#img6").attr("src","../images/4.jpg");
+								ly[6]='b';
+								break;
+							case 3:
+								$("#img6").show();
+								$("#img6").attr("src","../images/1.jpg");
+								ly[6]='ac';
+								break;															
+						}
+						break;					
+				}
+				if(rock==6)
+				{
+					$("#start").attr("disabled","disabled");
+				}
+				rock++;
+
+			
+		})
+		$("#mean").click(function(){
+			if(rock>6)
+			{
+				for(var q in ly){
+					if(ly[q]=='ac')
+					{
+					 str_ly_a+='a';
+					}else if(ly[q]=='bc')
+					{
+						str_ly_a+='b';
+					}else
+					{
+						str_ly_a+=ly[q];
+					}
+
+					if(ly[q]=='ac')
+					{
+					 str_ly_b+='b';
+					}else if(ly[q]=='bc')
+					{
+						str_ly_b+='a';
+					}else
+					{
+						str_ly_b+=ly[q];
+					}
+				}
+				
+				$("#yao").hide();
+				$("#final").hide();
+				$("#ben").show();
+				$("#bian").show();					
+				$("#benyao").show();
+				$("#bianyao").show();
+				$("#benyao").attr("src","../images/"+db[str_ly_a]+".jpg");
+				$("#bianyao").attr("src","../images/"+db[str_ly_b]+".jpg");
+			}else
+			{
+			 	alert("天机不可泄露！");
+			}			
+
+		})
+		function arrtimes(need,ary)
+		{
+			var tim=0;
+			for (var i = 0; i <= ary.length; i++) 
+			{
+				if(need==ary[i])
+				{
+					tim++;
+				}				
+			}
+			return tim;
+		}
+
+	})
+</script>
