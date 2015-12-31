@@ -1,1 +1,1 @@
-#####DEMO&ISSUES#####~
+#####DEMO&ISSUES#####
