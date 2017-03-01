@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+		<title>BOM</title>
+		<style>
+			#name{
+				width:200px;
+				height:50px;
+				background:#ccc;
+				margin:0 auto;
+				text-align:center;
+				padding:100px;
+				font-size:50px;
+			}
+			#button{
+				width:100px;
+				height:70px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="name"></div>
+		<center>
+			<button id="button" onclick="end()">开始</button>
+		</center>
+		<script type="text/javascript">
+			var div = document.getElementById("name");
+			var button = document.getElementById("button");
+			
+			var names = ['郭鹏云','肖铁','杨雨庚','陈金宾','李捷'];
+			
+			var i = 0,btn = false;
+			
+			//设置一个定时器
+			
+			function end(){
+				btn = !btn;
+				if(btn){
+					button.innerHTML = "停止";
+					t = setInterval(function(){
+						div.innerHTML = names[i];
+						i++;
+						if(i>=names.length){
+							i = 0;
+						}
+					},50);
+				}else{
+					clearInterval(t);
+					button.innerHTML = "开始";
+				}
+			}
+			
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
